@@ -29,7 +29,7 @@ def generate_matrix(array1, array2, n):
 
 
 # Example usage
-array1 = [1, 2, 3]
+array1 = [3, 2, 1]
 array2 = [4, 5, 6]
 n = 6
 result = generate_matrix(array1, array2, n)
