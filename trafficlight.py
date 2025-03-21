@@ -9,13 +9,20 @@ GPIO.setup(29, GPIO.OUT)  # Light 2 Red
 GPIO.setup(31, GPIO.OUT)  # Light 2 Yellow
 GPIO.setup(37, GPIO.OUT)  # Light 2 Green
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # Button for Light 1 (pull-down resistor)
-GPIO.setup(18, GPIO.IN)  # Button for Light 2
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # Button for Light 2
 
 def traffic_light_cycle():
     # Step 1: Light 1 Green, Light 2 Red
     GPIO.output(15, 1)  # Light 1 Green ON
     GPIO.output(29, 1)  # Light 2 Red ON
-    time.sleep(15)
+    red_light_duration = 15  # Default red light duration
+    start_time = time.time()
+    button_pressed = False  # Flag to track if the button has been pressed
+    while time.time() - start_time < red_light_duration:
+        if GPIO.input(18) == GPIO.HIGH and not button_pressed:  # Button pressed (active high)
+            red_light_duration = 5  # Reduce red light duration to 5 seconds
+            button_pressed = True  # Set the flag to prevent further reductions
+        time.sleep(0.1)  # Small delay to avoid busy-waiting
     GPIO.output(15, 0)  # Light 1 Green OFF
 
     # Step 2: Light 1 Yellow, Light 2 Red
