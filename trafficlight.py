@@ -54,45 +54,13 @@ def traffic_light_cycle():
     GPIO.output(31, 0)  # Light 2 Yellow OFF
     GPIO.output(11, 0)  # Light 1 Red OFF
 
-
-# Set GPIO pins (using physical pin numbers)
-TRIG_PIN = 12  # Pin 12 corresponds to GPIO18 in BOARD mode
-ECHO_PIN = 16  # Pin 16 corresponds to GPIO23 in BOARD mode
-
-# Set up the GPIO pins
-GPIO.setup(TRIG_PIN, GPIO.OUT)
-GPIO.setup(ECHO_PIN, GPIO.IN)
-
-def measure_distance():
-    # Send a 10us pulse to the TRIG_PIN
-    GPIO.output(TRIG_PIN, True)
-    time.sleep(0.00001)
-    GPIO.output(TRIG_PIN, False)
-
-    # Measure the ECHO_PIN pulse duration
-    start_time = time.time()
-    stop_time = time.time()
-
-    while GPIO.input(ECHO_PIN) == 0:
-        start_time = time.time()
-    
-    while GPIO.input(ECHO_PIN) == 1:
-        stop_time = time.time()
-
-    # Time difference between start and stop
-    time_elapsed = stop_time - start_time
-    # Calculate distance (speed of sound is ~34300 cm/s)
-    distance = (time_elapsed * 34300) / 2
-    time.sleep(1)
-    return distance
     
 
 
 
 try:
     while True:
-        #traffic_light_cycle() remove the "#" if you want the traffic light to run
-        print(measure_distance())
+        traffic_light_cycle() #remove the "#" if you want the traffic light to run
 except KeyboardInterrupt:
     GPIO.cleanup()
 
