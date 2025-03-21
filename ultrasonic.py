@@ -1,3 +1,5 @@
+import RPi.GPIO as GPIO
+import time
 # Set GPIO pins (using physical pin numbers)
 TRIG_PIN = 12  # Pin 12 corresponds to GPIO18 in BOARD mode
 ECHO_PIN = 16  # Pin 16 corresponds to GPIO23 in BOARD mode
