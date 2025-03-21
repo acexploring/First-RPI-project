@@ -91,7 +91,7 @@ def measure_distance():
 
 try:
     while True:
-        traffic_light_cycle()
+        #traffic_light_cycle() remove the "#" if you want the traffic light to run
         print(measure_distance())
 except KeyboardInterrupt:
     GPIO.cleanup()
