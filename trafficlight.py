@@ -39,9 +39,6 @@ def traffic_light_cycle():
             button_pressed = True  # Set the flag to prevent further reductions
         time.sleep(0.1)  # Small delay to avoid busy-waiting
 
-    # Ensure the red light stays on for the remaining duration
-    time.sleep(red_light_duration - (time.time() - start_time))
-
     GPIO.output(37, 0)  # Light 2 Green OFF
 
     # Step 4: Light 1 Red, Light 2 Yellow
