@@ -83,7 +83,6 @@ def measure_distance():
     time_elapsed = stop_time - start_time
     # Calculate distance (speed of sound is ~34300 cm/s)
     distance = (time_elapsed * 34300) / 2
-    print(distance)
     return distance
 
 
@@ -93,7 +92,7 @@ def measure_distance():
 try:
     while True:
         traffic_light_cycle()
-        measure_distance()
+        print(measure_distance())
 except KeyboardInterrupt:
     GPIO.cleanup()
 
