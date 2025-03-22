@@ -29,7 +29,7 @@ def measure_distance():
     time_elapsed = stop_time - start_time
     # Calculate distance (speed of sound is ~34300 cm/s)
     distance = (time_elapsed * 34300) / 2
-    time.sleep(1)
+    time.sleep(0.2)
     return distance
 try:
     while True:
